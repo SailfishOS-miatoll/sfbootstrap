@@ -136,7 +136,7 @@ sfb_sync_hybris_repos() {
 
 	#sfb_hook_exec pre-repo-sync
 	sfb_log "Syncing $branch source tree with $SFB_JOBS jobs..."
-	sfb_chroot habuild "repo sync -c -j$SFB_JOBS --fail-fast --fetch-submodules --no-clone-bundle --no-tags" || return 1
+	sfb_chroot habuild "repo sync -c -j$SFB_JOBS --force-sync --fetch-submodules --no-clone-bundle --no-tags" || return 1
 	#sfb_hook_exec post-repo-sync
 }
 sfb_sync_extra_repos() {

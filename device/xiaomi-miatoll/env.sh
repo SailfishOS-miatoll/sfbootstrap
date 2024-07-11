@@ -18,7 +18,7 @@ RELEASE=4.5.0.25
 TOOLING_RELEASE=4.5.0.18
 SDK_RELEASE=latest
 REPOS=(
-    'https://bitbucket.org/thexperienceproject/yuki-clang.git' prebuilts/yuki-clang "18.0.0" 1
+    'https://bitbucket.org/thexperienceproject/yuki-clang.git' prebuilts/yuki-clang "19.0.0git" 1
 )
 #LINKS=()
 export VENDOR DEVICE PORT_ARCH RELEASE

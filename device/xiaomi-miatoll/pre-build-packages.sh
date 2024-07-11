@@ -3,3 +3,5 @@ util="$ANDROID_ROOT/rpm/dhd/helpers/util.sh"
 if ! grep -q 'build -j' "$util"; then
     sed 's/build >>/build -j $(nproc) >>/' -i "$util"
 fi
+
+ln -s $ANDROID_ROOT/hybris
