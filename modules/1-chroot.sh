@@ -95,6 +95,9 @@ sfb_chroot_sb2_setup() {
 	fi
 	sfb_chroot sfossdk sh -c "sdk-assistant target create $VENDOR-$DEVICE-$PORT_ARCH /parentroot$SFB_ARC/$target --tooling SailfishOS-$TOOLING_RELEASE --no-snapshot -y && sdk-assistant list" || return 1
 
+  sfb_chroot sfossdk sh -c 'sudo zypper ref -f && \
+sudo zypper --non-interactive in android-tools-hadk kmod && sb2 -t $VENDOR-$DEVICE-$PORT_ARCH -m sdk-install -R zypper --non-interactive rm ofono-configs-binder bluez5-configs-mer jolla-devicelock-daemon-encpartition' || return 1
+
 	sfb_log "Running Scratchbox2 self-test for $VENDOR-$DEVICE-$PORT_ARCH..."
 	sfb_chroot sfossdk sh -c 'cd;
 cat > test.c <<EOF

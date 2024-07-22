@@ -40,7 +40,8 @@ sfb_build_hal() {
 	if [ "$HAL_ENV_EXTRA" ]; then
 		extra_cmds+=" && $HAL_ENV_EXTRA"
 	fi
-	sfb_chroot habuild ". build/envsetup.sh && breakfast $HABUILD_DEVICE$extra_cmds && make -j$SFB_JOBS ${targets[*]}" || return 1
+  cd $ANDROID_ROOT
+	bash -c ". ./build/envsetup.sh && breakfast $HABUILD_DEVICE$extra_cmds && make -j$SFB_JOBS ${targets[*]}" || return 1
 	if sfb_array_contains "^libbiometry_fp_api" "${targets[@]}"; then
 		sfb_log "Copying built sailfish-fpd-community HAL files..."
 		sfb_chroot sfossdk sh -c 'hybris/mw/sailfish-fpd-community*/rpm/copy-hal.sh' || return 1
